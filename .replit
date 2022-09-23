@@ -1,0 +1,9 @@
+language = "python3"
+run = "npm list | grep nodemon || npm install nodemon; echo $(date) START > restart.log; npx nodemon -L -x 'rm -f .git/index.lock; git pull origin main --force; git reset --hard origin/main; ./venv/bin/python app.pyc || { ./venv/bin/pip install -r requirements.txt; echo $(date) CRASH >> restart.log; };' --watch restart.log;"
+
+[env]
+VIRTUAL_ENV = "/home/runner/${REPL_SLUG}/venv"
+PATH = "${VIRTUAL_ENV}/bin"
+PYTHONPATH="${VIRTUAL_ENV}/lib/python3.8/site-packages"
+REPLIT_POETRY_PYPI_REPOSITORY="https://package-proxy.replit.com/pypi/"
+MPLBACKEND="TkAgg"
